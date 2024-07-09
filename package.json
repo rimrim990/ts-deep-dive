@@ -1,0 +1,13 @@
+{
+  "name": "ts-deep-dive",
+  "version": "1.0.0",
+  "description": "deep dive to typescript",
+  "main": "index.js",
+  "repository": "https://github.com/rimrim990/ts-deep-dive.git",
+  "author": "rimrim990",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.5.3"
+  }
+}
