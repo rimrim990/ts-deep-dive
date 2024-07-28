@@ -302,7 +302,59 @@
             return other.content === this.content;
         }
     }
+}
 
-    // 'this'-based type guards.
+/**
+ * Getters / Setters
+ */
+{
+    class Thing {
+        #size = 0
 
+        get size(): number {
+            return this.#size
+        }
+
+        set size(value: string | number | boolean) {
+            let num = Number(value)
+
+            // Don't allow NaN, Infinity, etc
+            if (!Number.isFinite(num)) {
+                this.#size = 0
+                return;
+            }
+
+            this.#size = num;
+        }
+    }
+
+    const t = new Thing()
+    t.size = true;
+    console.log(t.size) // 0
+}
+
+/**
+ * abstract Classes and Members
+ * - abstract class cannot be directly instantiated.
+ */
+abstract class Base {
+    abstract getName(): string;
+
+    printName() {
+        console.log(`Hello, ${this.getName()}`)
+    }
+}
+
+class Derived extends Base {
+    getName(): string {
+        return "world";
+    }
+}
+
+const d = new Derived()
+d.printName()
+
+function greet(ctor: new () => Base) {
+    const instance = new ctor()
+    instance.printName()
 }
