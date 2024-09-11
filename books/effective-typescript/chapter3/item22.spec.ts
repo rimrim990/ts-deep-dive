@@ -68,4 +68,19 @@ describe('타입 좁히기', () => {
             }
         }
     })
+
+    it ('사용자 정의 타입 가드로 타입을 좁힐 수 있다.', () => {
+        function isInputElement(el: HTMLElement): el is HTMLInputElement {
+            return 'value' in el;
+        }
+
+        function getElementContent(el: HTMLElement) {
+            if (isInputElement(el)) {
+                el; // HTMPInputElement
+                return el.value;
+            }
+            el; // HTMLElement
+            return el.textContent;
+        }
+    })
 })
